@@ -1,0 +1,28 @@
+{
+  "name": "employee_summary",
+  "version": "1.0.0",
+  "description": "This program will build a employee directory",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawn220a/employee_summary.git"
+  },
+  "author": "Shawn Tschoepe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shawn220a/employee_summary/issues"
+  },
+  "homepage": "https://github.com/shawn220a/employee_summary#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "jest": "^25.1.0"
+  }
+}
