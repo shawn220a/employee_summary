@@ -2,8 +2,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
 
-inquirer.prompt([
+function addManager() {
+  inquirer.prompt([
   {
     type: 'input',
     name: 'managerName',
@@ -24,12 +26,13 @@ inquirer.prompt([
     name: 'managerOfficeNumber',
     message: 'What is your manager\'s office number?'
   }
-])
-.then(answers => {
-  let (answers.managerName) = 
-}).then(() => {
-  newMember();
-})
+  ])
+  .then(answers => {
+    let (answers.managerName) = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+  }).then(() => {
+    newMember();
+  })
+}
 
 function addEngineer() {
   inquirer.prompt([
@@ -104,3 +107,5 @@ function newMember(){
     }
   })
 }
+
+addManager();
