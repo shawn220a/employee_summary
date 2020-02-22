@@ -37,7 +37,7 @@ function addManager() {
     let { managerName, managerId, managerEmail, managerOfficeNumber } = answers;
     
     team.manager = new Manager(managerName, managerId, managerEmail, managerOfficeNumber);
-  }).then(() => {
+
     newMember();
   })
 }
@@ -68,7 +68,7 @@ function addEngineer() {
     let { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
 
     team.engineer.push(new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub));
-  }).then(() => {
+
     newMember();
   })
 }
@@ -97,9 +97,9 @@ function addIntern () {
     }
   ]).then(answers => {
     let { internName, internId, internEmail, internSchool } = answers;
-    
+
     team.intern.push(new Intern(internName, internId, internEmail, internSchool));
-  }).then(() => {
+
     newMember();
   })
 }
@@ -111,12 +111,14 @@ function newMember(){
     message: 'Which type of team member would you like to add?',
     choices: ['Intern', 'Engineer', 'I don\'t want to add any more team members']
   }).then(answers => {
-    let { addNewMember } = answers.addNewMember;
+    let { addNewMember } = answers;
     if (addNewMember === 'Intern') {
       addIntern();
-    } else if (addNewMember === 'Engineer') {
+    } 
+    if (addNewMember === 'Engineer') {
       addEngineer();
-    } else {
+    }
+    if (addNewMember === 'I don\'t want to add any more team members'){
       console.log(team.manager);
       console.log(team.intern);
       console.log(team.engineer);
