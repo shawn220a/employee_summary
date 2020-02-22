@@ -4,6 +4,12 @@ const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 
+let team = {
+  manager: undefined,
+  intern: [],
+  engineer: []
+}
+
 function addManager() {
   inquirer.prompt([
   {
@@ -28,7 +34,9 @@ function addManager() {
   }
   ])
   .then(answers => {
-    let (answers.managerName) = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+    let { managerName, managerId, managerEmail, managerOfficeNumber } = answers;
+    
+    team.manager = new Manager(managerName, managerId, managerEmail, managerOfficeNumber);
   }).then(() => {
     newMember();
   })
@@ -57,7 +65,8 @@ function addEngineer() {
       message: 'What is your engineer\'s GitHub username?'
     }
   ]).then(answers => {
-    let (answers.engineerName) = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+    let { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
+    team.engineer.push(new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub));
   }).then(() => {
     newMember();
   })
@@ -86,7 +95,8 @@ function addIntern () {
       message: 'What is your intern\'s school?'
     }
   ]).then(answers => {
-    let (answers.internName) = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+    let { internName, internId, internEmail, internSchool } = answers;
+    team.intern.push(new Intern(internName, internId, internEmail, internSchool));
   }).then(() => {
     newMember();
   })
@@ -104,6 +114,10 @@ function newMember(){
       addIntern();
     } else if (addNewMember === 'Engineer') {
       addEngineer();
+    } else {
+      console.log(team.manager);
+      console.log(team.intern);
+      console.log(team.engineer);
     }
   })
 }
