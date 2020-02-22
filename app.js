@@ -66,6 +66,7 @@ function addEngineer() {
     }
   ]).then(answers => {
     let { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
+
     team.engineer.push(new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub));
   }).then(() => {
     newMember();
@@ -96,6 +97,7 @@ function addIntern () {
     }
   ]).then(answers => {
     let { internName, internId, internEmail, internSchool } = answers;
+    
     team.intern.push(new Intern(internName, internId, internEmail, internSchool));
   }).then(() => {
     newMember();
