@@ -138,45 +138,42 @@ function newMember(){
 }
 
 function createOutput() {
-  allManagerHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+  allManagerHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem; margin-bottom: 5px;">
   <div class="card-header">
     <div class="card-header">
-      ${team.manager.name}
-      (${team.manager.role})
+      ${team.manager.name} (${team.manager.role})
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${team.manager.id}</li>
-      <li class="list-group-item">${team.manager.email}</li>
-      <li class="list-group-item">${team.manager.officeNumber}</li>
+      <li class="list-group-item">ID: ${team.manager.id}</li>
+      <li class="list-group-item">Email: ${team.manager.email}</li>
+      <li class="list-group-item"> Office Number: ${team.manager.officeNumber}</li>
     </ul>
   </div> </li>`;
 
   team.intern.forEach(intern => {
-    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem; margin-bottom: 5px;">
     <div class="card-header">
     <div class="card-header">
-      ${intern.name}
-      (${intern.role})
+      ${intern.name} (${intern.role})
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${intern.id}</li>
-      <li class="list-group-item">${intern.email}</li>
-      <li class="list-group-item">${intern.school}</li>
+      <li class="list-group-item">ID: ${intern.id}</li>
+      <li class="list-group-item">Email: ${intern.email}</li>
+      <li class="list-group-item">School: ${intern.school}</li>
     </ul>
   </div> </li>`;
   })
 
   team.engineer.forEach(engineer => {
-    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem; margin-bottom: 5px;">
     <div class="card-header">
     <div class="card-header">
-      ${engineer.name}
-      (${engineer.role})
+      ${engineer.name} (${engineer.role})
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${engineer.id}</li>
-      <li class="list-group-item">${engineer.email}</li>
-      <li class="list-group-item">${engineer.gitHub}</li>
+      <li class="list-group-item">ID: ${engineer.id}</li>
+      <li class="list-group-item">Email: ${engineer.email}</li>
+      <li class="list-group-item">GitHub: ${engineer.gitHub}</li>
     </ul>
   </div> </li>`;
   })
