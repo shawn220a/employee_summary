@@ -36,6 +36,8 @@ const engineerHTML = fs.readFileSync('./templates/engineer.html', 'utf8', (err, 
   return data;
 });
 
+let newHTML = '';
+
 function addManager() {
   inquirer.prompt([
   {
@@ -151,7 +153,10 @@ function newMember(){
 }
 
 function createOutput() {
-  fs.writeFile('./output/team.html', mainHTML, (err) => {
+  newHTML = mainHTML.replace('{{manager.html}}', managerHTML);
+  newHTML = newHTML.replace('{{intern.html}}', internHTML);
+  newHTML = newHTML.replace('{{engineer.html}}', engineerHTML);
+  fs.writeFile('./output/team.html', newHTML, (err) => {
     if (err) throw err;
     console.log('Successfully wrote to file');
   });
