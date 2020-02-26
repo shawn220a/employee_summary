@@ -119,11 +119,15 @@ function newMember(){
       addEngineer();
     }
     if (addNewMember === 'I don\'t want to add any more team members'){
-      console.log(team.manager);
-      console.log(team.intern);
-      console.log(team.engineer);
+      createOutput();
     }
   })
+}
+
+function createOutput() {
+  console.log(team.manager);
+  console.log(team.intern);
+  console.log(team.engineer);
 }
 
 addManager();
