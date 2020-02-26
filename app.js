@@ -138,7 +138,8 @@ function newMember(){
 }
 
 function createOutput() {
-  allManagerHTML += `<div class="card" style="width: 18rem;">
+  allManagerHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+  <div class="card-header">
     <div class="card-header">
       ${team.manager.name}
       (${team.manager.role})
@@ -148,10 +149,11 @@ function createOutput() {
       <li class="list-group-item">${team.manager.email}</li>
       <li class="list-group-item">${team.manager.officeNumber}</li>
     </ul>
-  </div>`;
+  </div> </li>`;
 
   team.intern.forEach(intern => {
-    allInternsHTML += `<div class="card" style="width: 18rem;">
+    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+    <div class="card-header">
     <div class="card-header">
       ${intern.name}
       (${intern.role})
@@ -161,11 +163,12 @@ function createOutput() {
       <li class="list-group-item">${intern.email}</li>
       <li class="list-group-item">${intern.school}</li>
     </ul>
-  </div>`;
+  </div> </li>`;
   })
 
   team.engineer.forEach(engineer => {
-    allInternsHTML += `<div class="card" style="width: 18rem;">
+    allInternsHTML += `<li> <div class="card" style="width: 18rem; float: left;margin-right: 1rem;">
+    <div class="card-header">
     <div class="card-header">
       ${engineer.name}
       (${engineer.role})
@@ -175,7 +178,7 @@ function createOutput() {
       <li class="list-group-item">${engineer.email}</li>
       <li class="list-group-item">${engineer.gitHub}</li>
     </ul>
-  </div>`;
+  </div> </li>`;
   })
   writeHTML();
 }
