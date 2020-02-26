@@ -10,6 +10,32 @@ let team = {
   engineer: []
 }
 
+// Read and save .html templates to variables
+const mainHTML = fs.readFileSync('./templates/main.html', 'utf8', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  return data;
+});
+const managerHTML = fs.readFileSync('./templates/manager.html', 'utf8', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  return data;
+});
+const internHTML = fs.readFileSync('./templates/intern.html', 'utf8', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  return data;
+});
+const engineerHTML = fs.readFileSync('./templates/engineer.html', 'utf8', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  return data;
+});
+
 function addManager() {
   inquirer.prompt([
   {
@@ -125,9 +151,7 @@ function newMember(){
 }
 
 function createOutput() {
-  console.log(team.manager);
-  console.log(team.intern);
-  console.log(team.engineer);
+  console.log(mainHTML);
 }
 
 addManager();
