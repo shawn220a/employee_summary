@@ -140,13 +140,13 @@ function newMember(){
 function createOutput() {
   allManagerHTML += `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${manager.name}
-      (${manager.role})
+      ${team.manager.name}
+      (${team.manager.role})
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${manager.id}</li>
-      <li class="list-group-item">${manager.email}</li>
-      <li class="list-group-item">${manager.officeNumber}</li>
+      <li class="list-group-item">${team.manager.id}</li>
+      <li class="list-group-item">${team.manager.email}</li>
+      <li class="list-group-item">${team.manager.officeNumber}</li>
     </ul>
   </div>`;
 
