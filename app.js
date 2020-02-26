@@ -10,26 +10,8 @@ let team = {
   engineer: []
 }
 
-// Read and save .html templates to variables
+// Read and save .html template to variable
 const mainHTML = fs.readFileSync('./templates/main.html', 'utf8', (err, data) => {
-  if (err) {
-    throw err;
-  }
-  return data;
-});
-const managerHTML = fs.readFileSync('./templates/manager.html', 'utf8', (err, data) => {
-  if (err) {
-    throw err;
-  }
-  return data;
-});
-const internHTML = fs.readFileSync('./templates/intern.html', 'utf8', (err, data) => {
-  if (err) {
-    throw err;
-  }
-  return data;
-});
-const engineerHTML = fs.readFileSync('./templates/engineer.html', 'utf8', (err, data) => {
   if (err) {
     throw err;
   }
@@ -37,6 +19,9 @@ const engineerHTML = fs.readFileSync('./templates/engineer.html', 'utf8', (err, 
 });
 
 let newHTML = '';
+let allManagerHTML = '';
+let allInternsHTML = '';
+let allEngineersHTML = '';
 
 function addManager() {
   inquirer.prompt([
@@ -153,9 +138,52 @@ function newMember(){
 }
 
 function createOutput() {
-  newHTML = mainHTML.replace('{{manager.html}}', managerHTML);
-  newHTML = newHTML.replace('{{intern.html}}', internHTML);
-  newHTML = newHTML.replace('{{engineer.html}}', engineerHTML);
+  allManagerHTML += `<div class="card" style="width: 18rem;">
+    <div class="card-header">
+      ${manager.name}
+      (${manager.role})
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${manager.id}</li>
+      <li class="list-group-item">${manager.email}</li>
+      <li class="list-group-item">${manager.officeNumber}</li>
+    </ul>
+  </div>`;
+
+  team.intern.forEach(intern => {
+    allInternsHTML += `<div class="card" style="width: 18rem;">
+    <div class="card-header">
+      ${intern.name}
+      (${intern.role})
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${intern.id}</li>
+      <li class="list-group-item">${intern.email}</li>
+      <li class="list-group-item">${intern.school}</li>
+    </ul>
+  </div>`;
+  })
+
+  team.engineer.forEach(engineer => {
+    allInternsHTML += `<div class="card" style="width: 18rem;">
+    <div class="card-header">
+      ${engineer.name}
+      (${engineer.role})
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${engineer.id}</li>
+      <li class="list-group-item">${engineer.email}</li>
+      <li class="list-group-item">${engineer.gitHub}</li>
+    </ul>
+  </div>`;
+  })
+  writeHTML();
+}
+
+function writeHTML() {
+  newHTML = mainHTML.replace('{{manager.html}}', allManagerHTML);
+  newHTML = newHTML.replace('{{intern.html}}', allInternsHTML);
+  newHTML = newHTML.replace('{{engineer.html}}', allEngineersHTML);
   fs.writeFile('./output/team.html', newHTML, (err) => {
     if (err) throw err;
     console.log('Successfully wrote to file');
