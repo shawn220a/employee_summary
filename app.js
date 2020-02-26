@@ -151,7 +151,10 @@ function newMember(){
 }
 
 function createOutput() {
-  console.log(mainHTML);
+  fs.writeFile('./output/team.html', mainHTML, (err) => {
+    if (err) throw err;
+    console.log('Successfully wrote to file');
+  });
 }
 
 addManager();
