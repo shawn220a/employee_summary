@@ -6,7 +6,7 @@ This program allows you to use the terminal to ask you about your software engin
 
 ## Video of Program
 
-![GIF]()
+![GIF](https://media.giphy.com/media/LO8u6wZIeALT57EKaI/giphy.gif)
 
 ## Installing Packages
 
